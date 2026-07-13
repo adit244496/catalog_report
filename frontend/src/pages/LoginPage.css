@@ -1,0 +1,97 @@
+.login-container {
+  min-height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  font-family: 'Inter', sans-serif;
+  overflow: hidden;
+  background-image: var(--bg-graphic);
+  background-size: cover;
+  background-position: center;
+}
+
+.login-overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(248, 250, 252, 0.4);
+  z-index: 1;
+}
+
+/* The light blurry tile */
+.login-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+  border-radius: 28px;
+  padding: 4rem 4.5rem;
+  width: 100%;
+  max-width: 480px;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.login-logo {
+  width: 240px;
+  object-fit: contain;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.login-input {
+  background: rgba(255, 255, 255, 0.9) !important;
+  border: 1px solid rgba(148, 163, 184, 0.4) !important;
+  border-radius: 12px !important;
+  padding: 1rem 1.2rem !important;
+  font-size: 1rem !important;
+  color: #0f172a !important;
+  width: 100%;
+  box-sizing: border-box;
+  transition: all 0.3s ease !important;
+}
+
+.login-input:focus {
+  border-color: #0f172a !important;
+  background: #ffffff !important;
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(15, 23, 42, 0.08) !important;
+}
+
+.login-btn {
+  background-color: #0f172a !important;
+  color: white !important;
+  padding: 1.1rem !important;
+  border-radius: 12px !important;
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.1em !important;
+  margin-top: 1rem !important;
+  border: none !important;
+  cursor: pointer;
+  box-shadow: 0 10px 15px -3px rgba(15, 23, 42, 0.1) !important;
+  transition: all 0.3s ease !important;
+}
+
+.login-btn:hover {
+  transform: translateY(-2px) !important;
+  background-color: #1e293b !important;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-slide-up {
+  animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
