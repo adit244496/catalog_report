@@ -40,10 +40,10 @@ def create_app():
     from app import crud
     
     with SessionLocal() as db:
-        if not crud.get_user_by_username(db, username="superadmin"):
-            crud.create_user(db, username="superadmin", password="Kolkata@123", role_str="super_admin")
-        if not crud.get_user_by_username(db, username="admin"):
-            crud.create_user(db, username="admin", password="Kolkata@123", role_str="admin")
+        if settings.DEFAULT_SUPERADMIN_PASSWORD and not crud.get_user_by_username(db, username=settings.DEFAULT_SUPERADMIN_USERNAME):
+            crud.create_user(db, username=settings.DEFAULT_SUPERADMIN_USERNAME, password=settings.DEFAULT_SUPERADMIN_PASSWORD, role_str="super_admin")
+        if settings.DEFAULT_ADMIN_PASSWORD and not crud.get_user_by_username(db, username=settings.DEFAULT_ADMIN_USERNAME):
+            crud.create_user(db, username=settings.DEFAULT_ADMIN_USERNAME, password=settings.DEFAULT_ADMIN_PASSWORD, role_str="admin")
     app = Flask(__name__)
     app.config['SECRET_KEY'] = settings.SECRET_KEY
     
