@@ -9,9 +9,6 @@ const MaterialCard = ({ material, categories, userRole, onOpenModal }) => {
 
   const getFullUrl = (url) => {
     if (!url) return null;
-    if (url.startsWith('/')) {
-      return `http://localhost:8000${url}`;
-    }
     return url;
   };
 

@@ -17,9 +17,6 @@ const MaterialModal = ({ material, categories, userRole, onClose, onPdfUploadSuc
 
   const getFullUrl = (url) => {
     if (!url) return null;
-    if (url.startsWith('/')) {
-      return `http://localhost:8000${url}`;
-    }
     return url;
   };
 
