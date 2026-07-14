@@ -53,8 +53,8 @@ def upload_file_to_s3(file) -> str:
         with open(file_path, "wb") as buffer:
             buffer.write(file.file.read())
             
-        # Return the local URL
-        return f"/static/uploads/{unique_filename}"
+        # Return the local URL (served via the /api proxy so it works behind nginx)
+        return f"/api/uploads/{unique_filename}"
     except Exception as e:
         print(f"Error saving file locally: {e}")
         return ""

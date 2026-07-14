@@ -4,7 +4,7 @@ import os
 # Ensure the parent directory is in the Python path so 'app.x' imports work!
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-from flask import Flask, jsonify
+from flask import Flask, jsonify, send_from_directory
 from flask_cors import CORS
 from app.database import engine, Base
 from app.core.config import settings
@@ -34,7 +34,18 @@ def create_app():
 
     # Create database tables
     Base.metadata.create_all(bind=engine)
-    
+
+    # Migrate any legacy upload URLs (/static/uploads/...) to the proxied /api path
+    from sqlalchemy import update, func
+    import app.models as _models
+    with engine.begin() as conn:
+        for column in (_models.Material.image_url, _models.Material.pdf_url):
+            conn.execute(
+                update(_models.Material)
+                .where(column.like('/static/uploads/%'))
+                .values({column: func.replace(column, '/static/uploads/', '/api/uploads/')})
+            )
+
     # Initialize default users if they don't exist
     from app.database import SessionLocal
     from app import crud
@@ -60,6 +71,13 @@ def create_app():
     app.register_blueprint(categories_bp)
     app.register_blueprint(materials_bp)
     app.register_blueprint(projects_bp)
+
+    # Serve locally-stored uploads under /api so they pass through the same proxy as the API
+    uploads_dir = os.path.join(os.path.dirname(__file__), "static", "uploads")
+
+    @app.route("/api/uploads/<path:filename>")
+    def serve_upload(filename):
+        return send_from_directory(uploads_dir, filename)
 
     @app.route("/")
     def read_root():
