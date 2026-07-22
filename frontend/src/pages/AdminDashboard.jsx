@@ -657,6 +657,15 @@ const AdminDashboard = ({ onLogout, userRole }) => {
             {userEntryMode === 'single' || editingUserId ? (
               <form onSubmit={handleUserSubmit}>
                 <div className="form-group"><label className="form-label">Username *</label><input type="text" className="form-control" value={newUsername} onChange={e => setNewUsername(e.target.value)} placeholder="Enter a unique username" required /></div>
+                {editingUserId && (
+                  <div className="form-group">
+                    <label className="form-label">Reset Password</label>
+                    <input type="password" className="form-control" value={newUserPassword} onChange={e => setNewUserPassword(e.target.value)} placeholder="Leave blank to keep current password" autoComplete="new-password" />
+                    <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginTop: '0.5rem' }}>
+                      Enter a new password to reset it for this user. Leave blank to keep the existing one.
+                    </p>
+                  </div>
+                )}
                 <div className="form-group"><label className="form-label">Role *</label>
                   <select className="form-control" value={newUserRole} onChange={e => setNewUserRole(e.target.value)}>
                     <option value="admin">Admin</option>
@@ -664,6 +673,11 @@ const AdminDashboard = ({ onLogout, userRole }) => {
                     <option value="super_admin">Super Admin</option>
                   </select>
                 </div>
+                {!editingUserId && (
+                  <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginTop: '0.5rem' }}>
+                    New users are created with the default password <strong>Kolkata@123</strong> and prompted to reset it on first login.
+                  </p>
+                )}
                 <div style={{ display: 'flex', gap: '1rem', marginTop: '1rem' }}>
                   <button type="submit" className="btn btn-primary" style={{ flex: 1 }}>{editingUserId ? 'UPDATE USER' : 'CREATE USER'}</button>
                   {editingUserId && (
