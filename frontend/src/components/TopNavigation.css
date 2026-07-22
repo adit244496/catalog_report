@@ -55,6 +55,55 @@
   gap: 0.5rem;
 }
 
+.nav-user {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0 0.25rem 0 0.5rem;
+  max-width: 200px;
+}
+
+.nav-user-avatar {
+  flex-shrink: 0;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: var(--primary-color);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.nav-user-meta {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  line-height: 1.2;
+}
+
+.nav-user-name {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.nav-user-role {
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .filter-fields-wrapper {
   display: flex;
   gap: 0.5rem;
@@ -208,22 +257,81 @@
 
 @media (max-width: 768px) {
   .top-navigation {
-    padding: 1rem 1rem;
+    padding: 0.85rem 1rem;
     justify-content: space-between;
+    flex-wrap: wrap;
+    row-gap: 0.7rem;
   }
-  
+
   .mobile-menu-btn {
     display: flex;
   }
-  
+
   .search-input-wrapper-slim {
     width: 140px;
   }
-  
 
-  
   .btn-slim {
     padding: 0.4rem 0.6rem;
+  }
+
+  /* Let the icon cluster stay on row 1 and push the filters onto their own row */
+  .nav-right {
+    flex-wrap: wrap;
+    row-gap: 0.7rem;
+    justify-content: flex-end;
+    gap: 0.35rem;
+  }
+
+  .filter-system-container {
+    order: 5;
+    flex: 1 1 100%;
+  }
+
+  /* Inline styles set an explicit max-width/width, so these need !important */
+  .filter-fields-wrapper {
+    max-width: 100% !important;
+    width: 100%;
+    gap: 0.4rem;
+  }
+
+  .filter-field-input {
+    flex: 1 1 0;
+    min-width: 0;
+    width: 100% !important;
+    padding: 0.45rem 0.7rem;
+    font-size: 16px; /* keep at 16px so iOS doesn't zoom on focus */
+  }
+
+  /* Comfortable touch targets */
+  .btn-icon {
+    padding: 0.6rem;
+    min-width: 40px;
+    min-height: 40px;
+  }
+
+  /* Keep only the avatar on small screens - full name shows in the tooltip */
+  .nav-user-meta {
+    display: none;
+  }
+
+  .nav-user {
+    padding: 0;
+    max-width: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .top-navigation {
+    padding: 0.75rem 0.85rem;
+  }
+
+  .nav-left {
+    gap: 0.5rem;
+  }
+
+  .nav-divider {
+    display: none;
   }
 }
 

@@ -137,3 +137,45 @@ a.spec-link:hover {
   color: var(--primary-color);
   cursor: pointer;
 }
+
+@media (max-width: 768px) {
+  /* Cards go full-width on mobile, so give the image more room */
+  .card-image-container {
+    height: 200px;
+  }
+
+  /* Hover lift is meaningless on touch and leaves cards stuck in a raised state */
+  .material-card:hover {
+    transform: none;
+  }
+
+  .material-card:hover .card-image {
+    transform: none;
+  }
+
+  .card-content {
+    padding: 0.9rem 1rem;
+  }
+
+  .card-meta {
+    flex-wrap: wrap;
+    row-gap: 0.25rem;
+  }
+
+  .used-in-badge {
+    top: 0.6rem;
+    right: 0.6rem;
+    max-width: calc(100% - 1.2rem);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .card-actions {
+    gap: 0.75rem;
+  }
+
+  .action-link {
+    padding: 0.35rem 0;
+  }
+}

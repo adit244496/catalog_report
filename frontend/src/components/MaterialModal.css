@@ -341,4 +341,53 @@
   .modal-body {
     flex-direction: column;
   }
+
+  /* Near-fullscreen sheet - 2rem of backdrop padding wastes a third of a phone screen */
+  .modal-backdrop {
+    padding: 0.75rem;
+    align-items: flex-end;
+  }
+
+  .modal-content {
+    max-height: 94vh;
+    border-radius: 8px;
+  }
+
+  .modal-header {
+    padding: 1rem 1.1rem;
+  }
+
+  .modal-title {
+    font-size: 1.2rem;
+    letter-spacing: 0.04em;
+    word-break: break-word;
+  }
+
+  .header-badges {
+    flex-wrap: wrap;
+    margin-bottom: 0.6rem;
+  }
+
+  .modal-pdf-frame {
+    height: 60vh;
+  }
+
+  .preview-toggle-btn,
+  .close-spec-btn {
+    padding: 0.6rem 1rem;
+    height: auto;
+    min-height: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .modal-backdrop {
+    padding: 0;
+    align-items: flex-end;
+  }
+
+  .modal-content {
+    max-height: 96vh;
+    border-radius: 12px 12px 0 0;
+  }
 }

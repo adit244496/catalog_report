@@ -6,7 +6,7 @@ import MaterialGrid from '../components/MaterialGrid';
 import MaterialModal from '../components/MaterialModal';
 import CalendarModal from '../components/CalendarModal';
 
-const CataloguePage = ({ isAuthenticated, onLogout, userRole }) => {
+const CataloguePage = ({ isAuthenticated, onLogout, userRole, userName }) => {
   const [categories, setCategories] = useState([]);
   const [materials, setMaterials] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -86,6 +86,7 @@ const CataloguePage = ({ isAuthenticated, onLogout, userRole }) => {
           totalItems={materials.length}
           materials={materials}
           userRole={userRole}
+          userName={userName}
           onOpenCalendar={() => setShowCalendar(true)}
           onToggleMobileMenu={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         />

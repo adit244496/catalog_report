@@ -145,12 +145,13 @@ const MaterialModal = ({ material, categories, userRole, onClose, onPdfUploadSuc
         {/* Body */}
         <div className="modal-body" style={{ padding: isPreviewMode ? '0' : '' }}>
           {isPreviewMode ? (
-            <iframe 
-              src={getFullUrl(material.pdf_url)} 
-              width="100%" 
-              height="650px" 
-              style={{ border: 'none', display: 'block' }} 
-              title="PDF Preview" 
+            <iframe
+              className="modal-pdf-frame"
+              src={getFullUrl(material.pdf_url)}
+              width="100%"
+              height="650px"
+              style={{ border: 'none', display: 'block' }}
+              title="PDF Preview"
             />
           ) : (
             <>

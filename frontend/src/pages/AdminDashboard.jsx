@@ -501,7 +501,7 @@ const AdminDashboard = ({ onLogout, userRole }) => {
         <div className="admin-grid">
           {/* Upload Form */}
           <div className="admin-panel glass">
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
+            <div className="panel-header-row">
               <h3 style={{ margin: 0 }}>{editingMaterialId ? 'Edit Brand' : 'Add Brand'}</h3>
               {!editingMaterialId && (
                 <div style={{ display: 'flex', gap: '0.5rem' }}>
@@ -644,7 +644,7 @@ const AdminDashboard = ({ onLogout, userRole }) => {
       {activeTab === 'users' && userRole === 'super_admin' && (
         <div className="admin-grid">
           <div className="admin-panel glass">
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
+            <div className="panel-header-row">
               <h3 style={{ margin: 0 }}>{editingUserId ? 'Edit User' : 'Create New User'}</h3>
               {!editingUserId && (
                 <div style={{ display: 'flex', gap: '0.5rem' }}>
@@ -786,7 +786,7 @@ const AdminDashboard = ({ onLogout, userRole }) => {
       {activeTab === 'projects' && userRole === 'super_admin' && (
         <div className="admin-grid">
           <div className="admin-panel glass">
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
+            <div className="panel-header-row">
               <h3 style={{ margin: 0 }}>{editingProjectId ? 'Edit Project' : 'Create New Project'}</h3>
               {!editingProjectId && (
                 <div style={{ display: 'flex', gap: '0.5rem' }}>

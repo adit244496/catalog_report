@@ -87,6 +87,7 @@ const TopNavigation = ({
   setUsedInFilter,
   totalItems,
   userRole,
+  userName,
   onOpenCalendar,
   onToggleMobileMenu,
   materials = []
@@ -101,6 +102,8 @@ const TopNavigation = ({
   const uniqueCompanies = Array.from(new Set(materials.map(m => m.name).filter(Boolean)));
   
   const uniqueUsedIn = Array.from(new Set(materials.flatMap(m => m.used_in ? m.used_in.split(',').map(s => s.trim()) : []).filter(Boolean)));
+
+  const roleLabel = userRole ? userRole.replace(/_/g, ' ').toUpperCase() : '';
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -209,6 +212,19 @@ const TopNavigation = ({
               </div>
             )}
           </div>
+        )}
+
+        {userName && (
+          <>
+            <div className="nav-divider"></div>
+            <div className="nav-user" title={`${userName}${roleLabel ? ` (${roleLabel})` : ''}`}>
+              <div className="nav-user-avatar">{userName.charAt(0).toUpperCase()}</div>
+              <div className="nav-user-meta">
+                <span className="nav-user-name">{userName}</span>
+                {roleLabel && <span className="nav-user-role">{roleLabel}</span>}
+              </div>
+            </div>
+          </>
         )}
       </div>
     </div>

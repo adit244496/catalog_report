@@ -186,3 +186,48 @@ button {
   backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 }
+
+/* Nothing should ever push the page sideways */
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+img, video, iframe {
+  max-width: 100%;
+}
+
+@media (max-width: 768px) {
+  /* iOS Safari zooms the whole page when a focused input is under 16px.
+     Bumping to 16px on touch layouts is the standard way to prevent it. */
+  input,
+  select,
+  textarea,
+  .form-control {
+    font-size: 16px;
+  }
+
+  .form-control {
+    padding: 0.55rem 0.7rem;
+  }
+
+  .form-group {
+    margin-bottom: 0.9rem;
+  }
+
+  .form-label {
+    font-size: 0.8rem;
+    margin-bottom: 0.35rem;
+  }
+
+  /* Comfortable tap targets */
+  .btn {
+    padding: 0.7rem 1.4rem;
+    min-height: 44px;
+  }
+
+  /* Hover lifts stick on touch devices */
+  .btn-primary:hover {
+    transform: none;
+  }
+}

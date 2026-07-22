@@ -112,3 +112,45 @@
   gap: 1rem;
   padding: 1.5rem;
 }
+
+@media (max-width: 768px) {
+  .cropper-overlay {
+    padding: 0.75rem;
+  }
+
+  .cropper-header,
+  .cropper-controls,
+  .cropper-footer {
+    padding: 1rem;
+  }
+
+  .cropper-container {
+    height: 55vh;
+    max-height: 400px;
+  }
+
+  .cropper-controls {
+    gap: 0.85rem;
+  }
+
+  /* Full-width stacked buttons are far easier to hit than right-aligned ones */
+  .cropper-footer {
+    flex-direction: column-reverse;
+    gap: 0.6rem;
+  }
+
+  .cropper-footer .btn {
+    width: 100%;
+  }
+
+  /* Larger slider thumb for touch */
+  .zoom-slider::-webkit-slider-thumb {
+    width: 22px;
+    height: 22px;
+  }
+
+  .zoom-slider::-moz-range-thumb {
+    width: 22px;
+    height: 22px;
+  }
+}

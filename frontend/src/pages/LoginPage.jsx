@@ -43,7 +43,7 @@ const LoginPage = ({ onLogin }) => {
         headers: { Authorization: `Bearer ${access_token}` }
       });
       
-      onLogin(access_token, meRes.data.role);
+      onLogin(access_token, meRes.data.role, meRes.data.username);
       navigate('/');
     } catch (err) {
       setError(err.response?.data?.detail || 'Login failed. Check your credentials.');
